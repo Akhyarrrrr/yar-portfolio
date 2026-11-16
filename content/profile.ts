@@ -1,3 +1,5 @@
+export const archiveSiteUrl = "https://yarrr-portfolio.vercel.app";
+
 export const skillGroups = {
   Languages: ["TypeScript", "JavaScript", "PHP", "Python", "SQL", "Kotlin", "C#"],
   "Web & APIs": ["React", "Next.js", "Node.js", "Express.js", "Laravel", "WordPress", "REST API", "Tailwind CSS"],

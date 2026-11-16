@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Poppins } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageProvider";
-import { profile } from "@/content/profile";
+import { archiveSiteUrl, profile } from "@/content/profile";
 
-const SITE_URL = profile.siteUrl;
+const SITE_URL = archiveSiteUrl;
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -32,10 +32,7 @@ export const metadata: Metadata = {
   title: `${profile.name} | ${profile.jobTitle}`,
   description: profile.description,
   robots: { index: true, follow: true },
-  alternates: {
-    canonical: "/",
-    languages: { en: "/", id: "/", "x-default": "/" },
-  },
+  alternates: { canonical: "/" },
   openGraph: {
     title: `${profile.name} | ${profile.jobTitle}`,
     description: profile.description,

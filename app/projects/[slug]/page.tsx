@@ -1,11 +1,10 @@
 import { getProjects, getProjectBySlug } from "@/lib/content";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { archiveSiteUrl } from "@/content/profile";
 import { personSchema, projectSchema, breadcrumbSchema } from "@/lib/schema-generator";
 import JsonLd from "@/app/components/schema/JsonLd";
 import ProjectDetailClient from "./ProjectDetailClient";
-
-const SITE_URL = "https://akhyar.dev";
 
 export async function generateStaticParams() {
   const projects = await getProjects();
@@ -29,21 +28,13 @@ export async function generateMetadata({
   return {
     title: `${title} | Akhyar Portfolio`,
     description: desc,
-    // Without this, the page silently inherits the root layout's
-    // `alternates: { canonical: "/" }` — every project page was reporting
-    // the homepage as its canonical URL, telling Google all 15 project
-    // pages were duplicates of "/" instead of distinct, indexable pages.
     alternates: {
-      canonical: `${SITE_URL}/projects/${slug}`,
-      languages: {
-        en: `${SITE_URL}/projects/${slug}`,
-        id: `${SITE_URL}/projects/${slug}`,
-        "x-default": `${SITE_URL}/projects/${slug}`,
-      },
+      canonical: `${archiveSiteUrl}/projects/${slug}`,
     },
     openGraph: {
       title: `${title} | Akhyar`,
       description: desc,
+      url: `${archiveSiteUrl}/projects/${slug}`,
       // No manual `images` — app/projects/[slug]/opengraph-image.tsx
       // generates a branded card (title + tech stack) per project.
       // Setting images here would silently override that file-based
@@ -85,9 +76,9 @@ export default async function ProjectDetailPage({
       <JsonLd
         id="breadcrumb-schema"
         data={breadcrumbSchema([
-          { name: "Home", url: SITE_URL },
-          { name: "Projects", url: `${SITE_URL}/#project` },
-          { name: title, url: `${SITE_URL}/projects/${slug}` },
+          { name: "Home", url: archiveSiteUrl },
+          { name: "Projects", url: `${archiveSiteUrl}/#project` },
+          { name: title, url: `${archiveSiteUrl}/projects/${slug}` },
         ])}
       />
       <ProjectDetailClient project={project} relatedProjects={related} />
