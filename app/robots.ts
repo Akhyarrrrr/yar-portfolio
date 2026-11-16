@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
+import { archiveSiteUrl } from "@/content/profile";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://akhyar.dev";
-
   return {
     rules: [
       {
@@ -11,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/dashboard/", "/login", "/api/"],
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: `${archiveSiteUrl}/sitemap.xml`,
   };
 }

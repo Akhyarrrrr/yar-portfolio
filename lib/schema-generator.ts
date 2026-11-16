@@ -1,14 +1,12 @@
 import type { ProjectType } from "./content";
-import { profile } from "@/content/profile";
-
-const SITE_URL = profile.siteUrl;
+import { archiveSiteUrl, profile } from "@/content/profile";
 
 export function websiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Akhyar Portfolio",
-    url: SITE_URL,
+    url: archiveSiteUrl,
     inLanguage: ["en", "id"],
     publisher: { "@type": "Person", name: profile.name },
   };
@@ -59,7 +57,7 @@ export function projectSchema(project: ProjectType) {
     "@type": type,
     name: title,
     description: desc,
-    image: `${SITE_URL}${project.imageUrl}`,
+    image: `${archiveSiteUrl}${project.imageUrl}`,
     url: project.liveUrl || project.githubUrl,
     author: { "@type": "Person", name: profile.name, url: profile.siteUrl },
   };
