@@ -32,7 +32,7 @@ export const profile = {
   location: "Banda Aceh, Indonesia",
   email: "ahyar12324@gmail.com",
   phone: "(+62) 822-7533-1698",
-  siteUrl: "https://akhyar.dev",
+  siteUrl: archiveSiteUrl,
   socials: {
     github: "https://github.com/Akhyarrrrr",
     linkedin: "https://www.linkedin.com/in/akhyarrr/",
