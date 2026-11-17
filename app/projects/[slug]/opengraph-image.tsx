@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { archiveSiteUrl } from "@/content/profile";
 import { getProjectBySlug } from "@/lib/content";
 
 export const size = { width: 1200, height: 630 };
@@ -81,7 +82,7 @@ export default async function OpengraphImage({
             display: "flex",
           }}
         >
-          akhyar.dev
+          {new URL(archiveSiteUrl).hostname}
         </div>
       </div>
     ),

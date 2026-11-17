@@ -15,9 +15,7 @@ function getEmailConfig() {
 
   return {
     apiKey: RESEND_API_KEY,
-    // Must be an address on a domain verified in Resend (or their
-    // onboarding@resend.dev sender). Kept in env, not hardcoded, so moving
-    // from the shared sender to noreply@akhyar.dev needs no code change.
+    // Resend requires a verified sender or its onboarding address.
     from: CONTACT_FROM_EMAIL,
     receiver: EMAIL_RECEIVER,
   };
